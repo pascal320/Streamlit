@@ -1024,8 +1024,10 @@ def main():
                 st.markdown("**Active country filter:** All countries in selected regions")
 
             st.markdown("---")
-            st.subheader("Fatality rate context")
 
+            # The following two charts provide fatality-rate context beneath
+            # the map. Removed the extra subheader to give them more space
+            # and increased their pixel height so they appear larger.
             col_countries, col_regions = st.columns(2)
 
             with col_countries:
@@ -1033,6 +1035,11 @@ def main():
                     latest, selected_regions, active_countries
                 )
                 if country_fig is not None:
+                    # make a bit larger than before
+                    try:
+                        country_fig.update_layout(height=520)
+                    except Exception:
+                        pass
                     st.plotly_chart(country_fig, use_container_width=True)
                 else:
                     st.info("Not enough data to plot country fatality vs cases.")
@@ -1042,6 +1049,10 @@ def main():
                     latest, selected_regions, active_countries
                 )
                 if region_fig is not None:
+                    try:
+                        region_fig.update_layout(height=520)
+                    except Exception:
+                        pass
                     st.plotly_chart(region_fig, use_container_width=True)
                 else:
                     st.info("Not enough data to plot region cases vs deaths.")
