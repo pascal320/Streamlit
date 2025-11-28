@@ -646,9 +646,9 @@ def metric_card(label, value):
 
 def main():
     st.set_page_config(
-    page_title="COVID Dashboard",
-    layout="centered"
-)
+        page_title="COVID Dashboard",
+        layout="wide",
+    )
 
     # ---- Global Styling ----
     st.markdown(
@@ -797,21 +797,8 @@ def main():
         unsafe_allow_html=True,
     )
 
-    # Add a small CSS constraint so the main content has a comfortable
-    # maximum width when deployed. Adjust `max-width` if you want it
-    # slightly wider or narrower.
-    st.markdown(
-        """
-        <style>
-            .main > div {
-                max-width: 1100px;   /* adjust this until it looks perfect */
-                margin-left: auto;
-                margin-right: auto;
-            }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+    # Removed max-width constraint so the app can use full available width
+    # (Streamlit page layout is set to `wide` above).
 
     df = load_data()
 
