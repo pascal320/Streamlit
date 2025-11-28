@@ -797,6 +797,21 @@ def main():
         unsafe_allow_html=True,
     )
 
+    # Constrain the main content width so the dashboard doesn't span the
+    # entire browser on very wide screens. Adjust `max-width` as desired.
+    st.markdown(
+        """
+        <style>
+            .main > div {
+                max-width: 1400px;   /* increase this number as you like */
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
     df = load_data()
 
     # ---- Session state for country filter shared between sidebar and map ----
