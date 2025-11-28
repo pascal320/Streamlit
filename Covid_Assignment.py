@@ -645,7 +645,10 @@ def metric_card(label, value):
 
 
 def main():
-    st.set_page_config(page_title="WHO COVID-19 Dashboard", layout="wide")
+    st.set_page_config(
+    page_title="COVID Dashboard",
+    layout="centered"
+)
 
     # ---- Global Styling ----
     st.markdown(
